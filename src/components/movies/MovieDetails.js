@@ -78,7 +78,6 @@ export default function MovieDetails({
     const callback = (e) => {
       if (e.key === "Escape") {
         onCloseMovie();
-        // console.log("Closing");
       }
     };
     document.addEventListener("keydown", callback);
