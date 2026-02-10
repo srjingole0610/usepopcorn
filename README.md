@@ -5,6 +5,7 @@ A React movie search app powered by the OMDb API.
 ## Overview
 
 usePopcorn lets you:
+
 - Search movies from OMDb
 - Open movie details
 - Rate movies using a custom star rating component
@@ -82,4 +83,4 @@ For production, move this to an environment variable pattern (for example, CRA `
 ## Notes
 
 - Styling is in `src/index.css`.
-- `src/App-v1.js` is an older version kept in the repo.
+- `src/App-v1.js` is an older version kept in the repo

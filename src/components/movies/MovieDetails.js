@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import StarRating from "../../starRating";
 import { API_KEY } from "../../constants/api";
@@ -29,6 +30,16 @@ export default function MovieDetails({
     Director: director,
     Genre: genre,
   } = movie;
+
+  // const [isTop, setIsTop] = useState(imdbRating > 8);
+  // console.log(isTop);
+
+  // useEffect(() => {
+  //   setIsTop(imdbRating > 8);
+  // }, [imdbRating]);
+
+  // const isTop = imdbRating > 8;
+  // console.log(isTop);
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -68,6 +79,8 @@ export default function MovieDetails({
     };
   }, []);
 
+  // const [avgRating, setAvgRating] = useState(0);
+
   function handleAdd() {
     const newWatchedMovie = {
       imdbID: selectedId,
@@ -80,6 +93,9 @@ export default function MovieDetails({
     };
 
     onAddWatched(newWatchedMovie);
+    // setAvgRating(Number(imdbRating));
+    // // alert(avgRating);
+    // setAvgRating((avgRating) => (avgRating + Number(userRating)) / 2);
     onCloseMovie();
   }
 
@@ -106,6 +122,8 @@ export default function MovieDetails({
               </p>
             </div>
           </header>
+
+          {/* <p>{avgRating}</p> */}
 
           <section>
             <div className='rating'>

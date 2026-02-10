@@ -15,7 +15,11 @@ import Loader from "./components/ui/Loader";
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(function () {
+    const storedWatched = localStorage.getItem("wathched");
+    return storedWatched ? JSON.parse(storedWatched) : [];
+  });
+  // const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [error, setError] = useState("");
@@ -30,6 +34,7 @@ export default function App() {
 
   function handleAddWatched(movie) {
     setWatched((currentWatched) => [...currentWatched, movie]);
+    // localStorage.setItem("wathched", JSON.stringify([...watched, movie]));
   }
 
   function handleDeleteWatched(id) {
@@ -37,6 +42,10 @@ export default function App() {
       currentWatched.filter((movie) => movie.imdbID !== id),
     );
   }
+
+  useEffect(() => {
+    localStorage.setItem("wathched", JSON.stringify(watched));
+  }, [watched]);
 
   useEffect(() => {
     const controller = new AbortController();
