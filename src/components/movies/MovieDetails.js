@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import StarRating from "../../starRating";
 import { API_KEY } from "../../constants/api";
 import Loader from "../ui/Loader";
+import { useKey } from "../../hooks/useKey";
 
 export default function MovieDetails({
   selectedId,
@@ -40,16 +41,6 @@ export default function MovieDetails({
     Genre: genre,
   } = movie;
 
-  // const [isTop, setIsTop] = useState(imdbRating > 8);
-  // console.log(isTop);
-
-  // useEffect(() => {
-  //   setIsTop(imdbRating > 8);
-  // }, [imdbRating]);
-
-  // const isTop = imdbRating > 8;
-  // console.log(isTop);
-
   useEffect(() => {
     const getMovieDetails = async () => {
       setIsLoading(true);
@@ -74,20 +65,7 @@ export default function MovieDetails({
     };
   }, [title]);
 
-  useEffect(() => {
-    const callback = (e) => {
-      if (e.key === "Escape") {
-        onCloseMovie();
-      }
-    };
-    document.addEventListener("keydown", callback);
-
-    return () => {
-      document.removeEventListener("keydown", callback);
-    };
-  }, []);
-
-  // const [avgRating, setAvgRating] = useState(0);
+  useKey("Escape", onCloseMovie);
 
   function handleAdd() {
     const newWatchedMovie = {
